@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
+using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 
 namespace AutomationPractice.source.main.page
 {
-    class CartPage : BasePage
+     public class CartPage : BasePage
     {
-        //public new IWebDriver driver;
+        //public IWebDriver driver;
+
         public CartPage(IWebDriver driver) : base(driver) // C# uses "base" keyword whenever Java uses "super" 
         {
+            //this.driver = driver;
         }
 
         [FindsBy(How = How.CssSelector, Using = "td.cart_product")]
@@ -26,7 +28,7 @@ namespace AutomationPractice.source.main.page
 
         [FindsBy(How = How.CssSelector, Using = "table#cart_summary td[data-title='Total'] span.price")]
         [CacheLookup]
-        protected IWebElement cart_product_price; // Total for a single product
+        protected IWebElement Cart_product_price { get; set; } // Total for a single product
 
         public CartPage GoToCheckShoppingCart()
         {
@@ -40,7 +42,7 @@ namespace AutomationPractice.source.main.page
             Console.WriteLine("Cart product name : " + Cart_product_name.Text);
             return Cart_product_name.Text; }
 
-        protected double GetCartProductPrice() { return double.Parse(cart_product_price.Text.Trim().Replace("$","")); }
+        protected double GetCartProductPrice() { return double.Parse(Cart_product_price.Text.Trim().Replace("$","")); }
 
         public CartPage VerifyProductIsAddedToCart(string product)
         {
@@ -55,7 +57,8 @@ namespace AutomationPractice.source.main.page
         {
             if (driver != null)
             {
-                Assert.IsTrue(GetCartProductName().Equals(expectedProduct));
+                //Assert.IsTrue(GetCartProductName().Equals(expectedProduct));
+                Assert.AreEqual(Cart_product_name.Text,expectedProduct);
                 Console.WriteLine("Product name " + expectedProduct + " is expected");
             } else
             {

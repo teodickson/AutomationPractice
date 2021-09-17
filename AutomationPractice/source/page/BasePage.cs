@@ -8,17 +8,17 @@ using System;
 
 namespace AutomationPractice.source.main.page
 {
-    class BasePage
+    public class BasePage
     {
         public IWebDriver driver;
         protected string categories = "//li/a[text()='%s']";
-        protected WebDriverWait webDriverWait;
+        //protected WebDriverWait webDriverWait;
 
-        public BasePage(IWebDriver driver)
+        public BasePage(IWebDriver _driver)
         {
-            this.driver = driver;
-            webDriverWait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            PageFactory.InitElements(driver, this);
+            this.driver = _driver;
+            //webDriverWait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            PageFactory.InitElements(_driver, this);
         }
 
         // Page Objects

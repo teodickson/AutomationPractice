@@ -7,7 +7,7 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace AutomationPractice.source.test
 {
-    class BaseTest
+    public class BaseTest
     {
         public IWebDriver driver;
         //public CartPage Cart;

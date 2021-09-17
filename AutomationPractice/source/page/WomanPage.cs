@@ -1,12 +1,12 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
+using SeleniumExtras.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 
 namespace AutomationPractice.source.main.page
 {
-    class WomanPage : BasePage
+    public class WomanPage : BasePage
     {
         //public IWebDriver driver;
        

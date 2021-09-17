@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutomationPractice.source.main.page
 {
-    class User
+    public class User
     {
         IWebDriver driver;
 
